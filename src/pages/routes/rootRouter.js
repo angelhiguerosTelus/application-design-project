@@ -8,10 +8,11 @@ import {
   Routes,
 } from "react-router-dom";
 import { LoginScreen } from "../auth/loginScreen";
+import { SingUpScreen } from "../auth/singUpScreen";
 import { HomeScreen } from "../home/homeScreen";
 
 export const RootRouter = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth,] = useState(false);
 
   return (
     <>
@@ -22,7 +23,7 @@ export const RootRouter = () => {
             element={!isAuth ? <Outlet /> : <Navigate to="/" />}
           >
             <Route path="" element={<LoginScreen />} />
-            <Route path="singup" element={<LoginScreen />} />
+            <Route path="singup" element={<SingUpScreen />} />
           </Route>
           <Route
             path="/"
