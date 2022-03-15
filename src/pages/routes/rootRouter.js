@@ -12,7 +12,7 @@ import { SingUpScreen } from "../auth/singUpScreen";
 import { HomeScreen } from "../home/homeScreen";
 
 export const RootRouter = () => {
-  const [isAuth,] = useState(false);
+  const [isAuth,] = useState(true);
 
   return (
     <>
