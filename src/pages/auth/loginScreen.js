@@ -2,15 +2,25 @@ import React from "react";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { GiSteamBlast } from "react-icons/gi";
 
+import wallpaper from "../../assets/img/login.jpg";
+import { Link } from "react-router-dom";
+
 export const LoginScreen = () => {
   return (
     <>
-      <section class="hero is-warning is-fullheight">
+      <section
+        class="hero is-fullheight"
+        style={{
+          backgroundImage: `url(${wallpaper})`,
+          backgroundSize: "cover",
+        }}
+      >
         <div class="hero-body">
           <div class="container">
             <div class="columns is-centered">
               <div class="column is-5-tablet is-4-desktop is-3-widescreen">
-                <form action="" class="box">
+                <form class="box">
+                  <span className="subtitle is-4 has-text-centered">Pokedex</span>
                   <div class="field">
                     <label for="" class="label">
                       Pokemon trainer nickname
@@ -35,9 +45,11 @@ export const LoginScreen = () => {
                     </div>
                   </div>
 
-                  <button class="button is-info is-fullwidth mt-5">
+                  <button class="button is-info is-fullwidth mt-5 mb-5">
                     Login
                   </button>
+
+                    <Link to="/auth/singup">Create an account</Link>
                 </form>
               </div>
             </div>
