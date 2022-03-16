@@ -10,6 +10,7 @@ import {
 import { LoginScreen } from "../auth/loginScreen";
 import { SingUpScreen } from "../auth/singUpScreen";
 import { HomeScreen } from "../home/homeScreen";
+import { PokedexScreen } from "../pokedex/pokedexScreen";
 
 export const RootRouter = () => {
   const [isAuth,] = useState(true);
@@ -30,6 +31,7 @@ export const RootRouter = () => {
             element={isAuth ? <Outlet /> : <Navigate to="/auth" />}
           >
             <Route path="" element={<HomeScreen />} />
+            <Route path="pokedex" element={<PokedexScreen />} />
           </Route>
         </Routes>
       </BrowserRouter>

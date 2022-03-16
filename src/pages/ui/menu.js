@@ -16,8 +16,8 @@ export const Menu = () => {
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-start">
             <Link to="/" className="navbar-item">Home</Link>
-            <Link to="/" className="navbar-item">My Pokedex</Link>
-            <Link to="/" className="navbar-item">Pokemon</Link>
+            <Link to="/mypokedex" className="navbar-item">My Pokedex</Link>
+            <Link to="/pokedex" className="navbar-item">Pokemon</Link>
 
           </div>
 
