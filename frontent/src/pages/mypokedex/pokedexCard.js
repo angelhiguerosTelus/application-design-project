@@ -46,9 +46,6 @@ export const PokedexCard = ({ url }) => {
 									<a onClick={handleModal}>More moves ...</a>
 								</li>
 							</ul>
-							<button className="button is-success is-fullwidth">
-								Add to pokedex
-							</button>
 						</div>
 					</div>
 				</div>
