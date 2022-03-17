@@ -10,6 +10,7 @@ import {
 import { LoginScreen } from "../auth/loginScreen";
 import { SingUpScreen } from "../auth/singUpScreen";
 import { HomeScreen } from "../home/homeScreen";
+import { MyPokedexScreen } from "../mypokedex/myPokedexScreen";
 import { PokedexScreen } from "../pokedex/pokedexScreen";
 
 export const RootRouter = () => {
@@ -32,6 +33,7 @@ export const RootRouter = () => {
           >
             <Route path="" element={<HomeScreen />} />
             <Route path="pokedex" element={<PokedexScreen />} />
+            <Route path="mypokedex" element={<MyPokedexScreen />} />
           </Route>
         </Routes>
       </BrowserRouter>
