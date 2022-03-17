@@ -1,22 +1,38 @@
 /* GENERAL */
 .container-app {
-    height: 100vh;
+	height: 100vh;
 }
 
 /* HOME::cue USER INFO */
 
 body {
-  background: #f5f7fa;
+	background: #f5f7fa;
 }
 
 .user-number {
-  font-size: 3em;
-  padding-top: 20px;
-  font-weight: bold;
+	font-size: 3em;
+	padding-top: 20px;
+	font-weight: bold;
 }
 
 .user-title {
-  font-size: 1.4em;
-  font-weight: 200;
+	font-size: 1.4em;
+	font-weight: 200;
 }
 
+/* MODEL */
+
+.modal-card {
+  margin-top: 190px;
+  width: 70%;
+}
+
+
+.modal {
+  display: block;
+}
+
+.content-modal{
+	overflow: auto;
+	max-height: 350px;
+}
