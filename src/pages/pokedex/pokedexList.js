@@ -6,7 +6,7 @@ export const PokedexList = ({ cards }) => {
     <>
       <div className="columns is-multiline">
 
-        {cards.map(card => <PokedexCard key={card.name} {...card} />)}
+        {cards.map(card => <PokedexCard key={card.name} {...card}  />)}
 
       </div>
     </>
