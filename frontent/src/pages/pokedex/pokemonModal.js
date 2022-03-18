@@ -15,7 +15,9 @@ export const PokemonModal = ({ pokemonData }) => {
 							<div className="media">
 								<div className="media-content">
 									<p className="title is-4">{pokemonData.name}</p>
-									<p className="subtitle is-6">Gender</p>
+									<p className="subtitle is-5">Nickname</p>
+									<p className="subtitle is-5">{pokemonData.gender || "genderless"}</p>
+
 								</div>
 							</div>
 						</div>
