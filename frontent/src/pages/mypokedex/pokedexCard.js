@@ -10,6 +10,10 @@ export const PokedexCard = ({ url }) => {
 		const fetch = async () => {
 			let data = await api.getInfo(url)
 			setPokemonData(data)
+
+			let genderData = await api.getInfo(`https://pokeapi.co/api/v2/gender/${data.id}`)
+			console.log(genderData)
+			setPokemonData(prev => ({...prev, gender: genderData.name}))
 		}
 		fetch()
 	}, [url])
@@ -34,7 +38,7 @@ export const PokedexCard = ({ url }) => {
 							<div className="media-content">
 								<p className="title is-4">{pokemonData.name}</p>
 								<p className="subtitle is-5">Nickname</p>
-								<p className="subtitle is-6">Gender</p>
+								<p className="subtitle is-6">{pokemonData.gender || "genderless"}</p>
 							</div>
 						</div>
 						<div className="content">
