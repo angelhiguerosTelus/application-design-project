@@ -1,42 +1,45 @@
 import React from "react";
 
 import profileIMG from "../../assets/img/login.jpg";
+import { useSessionStorage } from "../../hooks/useSessionStorage";
 
 export const UserInfo = ({ setView }) => {
+	const [user, ] = useSessionStorage('user', {})
+
   return (
     <>
-      <div class="columns">
-        <div class="container">
-          <div class="section">
-            <div class="columns is-multiline">
-              <div class="column is-2">
+      <div className="columns">
+        <div className="container">
+          <div className="section">
+            <div className="columns is-multiline">
+              <div className="column is-2">
                 <figure className="image is-square">
                   <img className="is-rounded" alt="profile" src={profileIMG} />
                 </figure>
               </div>
-              <div class="column is-4 name">
+              <div className="column is-4 name">
                 <p className="mb-5">
-                  <span class="title is-bold">Pokedek de AngelHigueros</span>
+                  <span className="title is-bold">Pokedek de {user.username}</span>
                 </p>
-                <p class="tagline">
-                  <strong>Name:</strong> Angel Higueros
+                <p className="tagline">
+                  <strong>Name:</strong> {user.name}
                 </p>
-                <p class="tagline">
-                  <strong>Region:</strong> Guatemala
+                <p className="tagline">
+                  <strong>Region:</strong> {user.region}
                 </p>
-                <p class="tagline">
-                  <strong>Gender:</strong> Male
+                <p className="tagline">
+                  <strong>Gender:</strong> {user.gender}
                 </p>
-                <p class="tagline">
-                  <strong>Age:</strong> 20
+                <p className="tagline">
+                  <strong>Age:</strong> {user.age}
                 </p>
-                <p class="tagline">
-                  <strong>Email:</strong> angel.higueros@telusinternational.com
+                <p className="tagline">
+                  <strong>Email:</strong> {user.email}
                 </p>
-                <p class="tagline">
-                  <strong>Trainer class</strong>: Battle
+                <p className="tagline">
+                  <strong>Trainer class</strong>: {user.class}
                 </p>
-                <p class="tagline">
+                <p className="tagline">
                   <button
                     onClick={() => setView((prev) => !prev)}
                     className="button is-small is-outlined is-info mt-2"
@@ -46,18 +49,18 @@ export const UserInfo = ({ setView }) => {
                 </p>
               </div>
 
-              <div class="column has-text-centered">
-                <p class="user-number">10</p>
-                <p class="user-title">Dias activo</p>
+              {/* <div className="column has-text-centered">
+                <p className="user-number">10</p>
+                <p className="user-title">Dias activo</p>
               </div>
-              <div class="column has-text-centered">
-                <p class="user-number">30</p>
-                <p class="user-title">Pokemons registados</p>
+              <div className="column has-text-centered">
+                <p className="user-number">30</p>
+                <p className="user-title">Pokemons registados</p>
               </div>
-              <div class="column has-text-centered">
-                <p class="user-number">3</p>
-                <p class="user-title">Pokemones totales</p>
-              </div>
+              <div className="column has-text-centered">
+                <p className="user-number">3</p>
+                <p className="user-title">Pokemones totales</p>
+              </div> */}
             </div>
           </div>
         </div>
