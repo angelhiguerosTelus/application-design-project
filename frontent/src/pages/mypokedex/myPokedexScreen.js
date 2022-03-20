@@ -4,16 +4,21 @@ import { Menu } from '../ui/menu'
 import { PokedexList } from './pokedexList'
 import { NavigationBar } from './navigationBar'
 import { UserInfo } from './userInfo'
+import { useSessionStorage } from '../../hooks/useSessionStorage'
 
 export const MyPokedexScreen = () => {
-	// const [filter, setFilter] = useState("");
+	const [user] = useSessionStorage('user', {})
+
 	const [cards, setCards] = useState([])
 	const [offset, setOffset] = useState(0)
 
 	useEffect(() => {
 		const fetch = async () => {
-			let data = await api.list(offset)
-			setCards(data.results)
+			let data = await api.listPokemons({
+				user,
+				offset,
+			})
+			setCards(data.data)
 		}
 		fetch()
 	}, [offset])

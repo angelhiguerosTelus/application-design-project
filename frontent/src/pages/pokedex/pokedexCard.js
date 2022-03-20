@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 import api from '../../api'
+import { useSessionStorage } from '../../hooks/useSessionStorage'
 import { Modal } from '../ui/modal'
 import { PokemonModal } from './pokemonModal'
 
 export const PokedexCard = ({ url }) => {
+	const [user] = useSessionStorage('user', {})
+
 	const [pokemonData, setPokemonData] = useState({})
 
 	useEffect(() => {
@@ -25,6 +29,32 @@ export const PokedexCard = ({ url }) => {
 	const handleModal = e => {
 		e.preventDefault()
 		setModal(prev => !prev)
+	}
+
+	const handleAddPokemon = async pokemon => {
+		const { value: nickname } = await Swal.fire({
+			title: 'New pokemon',
+			input: 'text',
+			inputLabel: 'Pokemon nickname',
+			inputPlaceholder: 'Enter pokemon nickname',
+		})
+
+		if (nickname) {
+			// let data = await api.addPokemon(pokemon)
+
+			let data = {
+				error: '',
+				data: 'pokemon added to pokedex',
+			}
+
+			if (data.error !== '') {
+				Swal.fire(`Pokemon wasn't added to pokedex`, '', 'error')
+			} else {
+				Swal.fire('Pokemon was added to pokedex', '', 'success').then(res => {
+					window.location.href = '/mypokedex'
+				})
+			}
+		}
 	}
 
 	return (
@@ -54,7 +84,10 @@ export const PokedexCard = ({ url }) => {
 									<a onClick={handleModal}>More moves ...</a>
 								</li>
 							</ul>
-							<button className="button is-success is-fullwidth">
+							<button
+								onClick={() => handleAddPokemon(pokemonData)}
+								className="button is-success is-fullwidth"
+							>
 								Add to pokedex
 							</button>
 						</div>

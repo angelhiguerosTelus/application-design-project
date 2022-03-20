@@ -1,36 +1,42 @@
 import React from 'react'
+import { useSessionStorage } from '../../hooks/useSessionStorage'
 
 export const UserInfo = () => {
+	const [user, ] = useSessionStorage('user', {})
+
 	return (
 		<>
-			<div class="columns">
-				<div class="container">
-					<div class="section">
-						<div class="columns box is-multiline">
-							<div class="column is-4 name">
+			<div className="columns">
+				<div className="container">
+					<div className="section">
+						<div className="columns box is-multiline">
+							<div className="column is-4 name">
 								<p className="mb-5">
-									<span class="title is-bold">Pokedek de AngelHigueros</span>
+									<span className="title is-bold">Pokedek de {user.username}</span>
 								</p>
-								<p class="tagline">
-									<strong>Region:</strong> Guatemala
+								<p className="tagline">
+									<strong>Name:</strong> {user.name}
 								</p>
-								<p class="tagline">
-									<strong>Trainer class</strong>: Battle
+								<p className="tagline">
+									<strong>Region:</strong> {user.region}
+								</p>
+								<p className="tagline">
+									<strong>Trainer class</strong>: {user.class}
 								</p>
 							</div>
-
-							<div class="column has-text-centered">
-								<p class="user-number">10</p>
-								<p class="user-title">Dias activo</p>
+{/* 
+							<div className="column has-text-centered">
+								<p className="user-number">10</p>
+								<p className="user-title">Dias activo</p>
 							</div>
-							<div class="column has-text-centered">
-								<p class="user-number">30</p>
-								<p class="user-title">Pokemons registados</p>
+							<div className="column has-text-centered">
+								<p className="user-number">30</p>
+								<p className="user-title">Pokemons registados</p>
 							</div>
-							<div class="column has-text-centered">
-								<p class="user-number">3</p>
-								<p class="user-title">Pokemones totales</p>
-							</div>
+							<div className="column has-text-centered">
+								<p className="user-number">3</p>
+								<p className="user-title">Pokemones totales</p>
+							</div> */}
 						</div>
 					</div>
 				</div>
