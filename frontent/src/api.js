@@ -1,62 +1,66 @@
-const requestAPI = async (endpoint, options) => {
-	const res = await fetch(`https://pokeapi.co/api/v2/${endpoint}`, options)
+const requestPokemonAPI = async (endpoint, options) => {
+	const res = await fetch(`https://pokeapi.co/api/v2${endpoint}`, options)
 	const data = await res.json()
 	return data
 }
 
-const requestAPI2 = async (endpoint, options) => {
+const requestAPI = async (endpoint, options) => {
+	const res = await fetch(`${endpoint}`, options)
+	const data = await res.json()
+	return data
+}
+
+const requestExternalAPI = async (endpoint, options) => {
 	const res = await fetch(endpoint, options)
 	const data = await res.json()
 	return data
 }
 
-const URL = ''
-
 const api = {
 	// Pokedex API
 	list(offset) {
-		return requestAPI(`pokemon?limit=100&offset=${offset}"`, {
+		return requestPokemonAPI(`pokemon?limit=100&offset=${offset}"`, {
 			method: 'GET',
 		})
 	},
 	getInfo(url) {
-		return requestAPI2(url, {
+		return requestExternalAPI(url, {
 			method: 'GET',
 		})
 	},
 
 	// User
-	login(body) {
-		return requestAPI(`${URL}/user`, {
+	login(params) {
+		return requestAPI(`/user`, {
 			method: 'POST',
-			body,
+			body: params,
 		})
 	},
-	singUp(body) {
-		return requestAPI(`${URL}/user/add`, {
+	singUp(params) {
+		return requestAPI(`/user/add`, {
 			method: 'POST',
-			body,
+			body: params,
 		})
 	},
-	updated(body) {
-		return requestAPI(`${URL}/user`, {
+	updated(params) {
+		return requestAPI(`/user`, {
 			method: 'PUT',
-			body,
+			body: params,
 		})
 	},
 
 	// API
 	addPokemon(pokemon) {
-		return requestAPI(`${URL}/pokemon`, {
+		return requestAPI(`/pokemon`, {
 			method: 'POST',
 			body: pokemon,
 		})
 	},
-	listPokemons(params) {
-		return requestAPI(`${URL}/pokemon/list`, {
-			method: 'POST',
-			body: params,
-		})
+	listPokemons(_uid) {
+		return requestAPI(`/pokemon/list/${_uid}`)
+	},
+	getPokemon(_uid, pokemon) {
+		return requestAPI(`/pokemon/list/${_uid}/${pokemon}`)
 	},
 }
 

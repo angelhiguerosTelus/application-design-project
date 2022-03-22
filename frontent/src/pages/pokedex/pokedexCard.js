@@ -18,8 +18,11 @@ export const PokedexCard = ({ url }) => {
 			let genderData = await api.getInfo(
 				`https://pokeapi.co/api/v2/gender/${data.id}`
 			)
-			console.log(genderData)
-			setPokemonData(prev => ({ ...prev, gender: genderData.name }))
+
+			let alreadyOwned = await api.getPokemon(user._uid, data.id)
+
+
+			setPokemonData(prev => ({ ...prev, gender: genderData.name, pokedex: alreadyOwned > 0 ? true : false }))
 		}
 
 		fetch()
@@ -84,12 +87,14 @@ export const PokedexCard = ({ url }) => {
 									<a onClick={handleModal}>More moves ...</a>
 								</li>
 							</ul>
-							<button
+
+							{!pokemonData ? <button
 								onClick={() => handleAddPokemon(pokemonData)}
 								className="button is-success is-fullwidth"
 							>
 								Add to pokedex
-							</button>
+							</button>: <span>This pokemon is in your pokedex</span>}
+							
 						</div>
 					</div>
 				</div>

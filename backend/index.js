@@ -1,6 +1,20 @@
 const express = require("express");
-const { getUser } = require("./src/bd/actionJson");
+
+const bodyParser = require("body-parser");
+const {
+  getUser,
+  addUser,
+  updateUser,
+  listPokemon,
+  addPokemon,
+  getPokemon,
+} = require("./src/bd/actionJson");
+
 const app = express();
+
+// Hanlde post request
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const { PORT } = require("./src/configs/server");
 
@@ -9,27 +23,73 @@ app.post("/user", (req, res) => {
   let { username, password } = req.body;
 
   let response = getUser(username, password);
-  res.send({
-    error: "",
-    data: response,
-  });
+
+  res.send(response);
 });
 
 app.post("/user/add", (req, res) => {
-  res.send("Hello World!");
+  let { name, username, password, region, gender, age, email, trainerclass } =
+    req.body;
+  console.log(req.body)
+
+  let response = addUser(
+    name,
+    username,
+    password,
+    region,
+    gender,
+    age,
+    email,
+    trainerclass
+  );
+
+  res.send(response);
 });
 
 app.put("/user", (req, res) => {
-  res.send("Hello World!");
+  let {
+    _uid,
+    name,
+    username,
+    password,
+    region,
+    gender,
+    age,
+    email,
+    trainerclass,
+  } = req.body;
+  let response = updateUser(
+    _uid,
+    name,
+    username,
+    password,
+    region,
+    gender,
+    age,
+    email,
+    trainerclass
+  );
+  res.send(response);
 });
 
 // Pokedex
-app.post("/pokemon", (req, res) => {
-  res.send("Hello World!");
+app.get("/pokemon/:_uid", (req, res) => {
+  let { _uid } = req.params;
+  let response = listPokemon(_uid);
+  res.send(response);
 });
 
-app.post("/pokemon/list", (req, res) => {
-  res.send("Hello World!");
+app.get("/pokemon/:_uid/:pokemon", (req, res) => {
+  let { _uid, pokemon } = req.params;
+  let response = getPokemon(_uid, pokemon);
+  res.send(response);
+});
+
+app.post("/pokemon", (req, res) => {
+  let { _uid, pokemon, nickname } = req.body;
+  let response = addPokemon(_uid, pokemon, nickname);
+  res.send(response);
+
 });
 
 app.listen(PORT, () => {
