@@ -33,152 +33,138 @@ export const SingUpScreen = () => {
 
 		let data = await api.singUp(userData)
 
-		// if (data.error !== '') {
-		// 	Swal.fire(
-		// 		'Incorrect data',
-		// 		'Complete all the fields and enter valid data',
-		// 		'error'
-		// 	)
-		// 	setIsAuth(false)
-		// } else {
-		// 	Swal.fire('Success', 'User was created', 'success')
-		// 	setIsAuth(true)
-		// 	setUser(data.data)
-		// 	window.location.href = '/'
-		// }
+		if (data.error !== '') {
+			Swal.fire(
+				'Incorrect data',
+				'Complete all the fields and enter valid data',
+				'error'
+			)
+			setIsAuth(false)
+		} else {
+			// Swal.fire('Success', 'User was created', 'success')
+			setIsAuth(true)
+			setUser(data.data)
+			window.location.href = '/'
+		}
 	}
 
 	return (
 		<>
 			<section
-				class="hero is-fullheight"
+				className="hero is-fullheight"
 				style={{
 					backgroundImage: `url(${wallpaper})`,
 					backgroundSize: 'cover',
 				}}
 			>
-				<div class="hero-body">
-					<div class="container">
-						<div class="columns is-centered">
-							<div class="column is-6-tablet is-6-desktop is-4-widescreen">
-								<form onSubmit={handleSubmit} class="box">
+				<div className="hero-body">
+					<div className="container">
+						<div className="columns is-centered">
+							<div className="column is-6-tablet is-6-desktop is-4-widescreen">
+								<form onSubmit={handleSubmit} className="box">
 									<span className="subtitle is-4 has-text-centered">
 										Crear cuenta - Pokedex
 									</span>
 
-									<div class="field mt-4">
-										<label for="" class="label">
-											Name
-										</label>
-										<div class="control has-icons-left">
+									<div className="field mt-4">
+										<label className="label">Name</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="name"
 												type="text"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<BsFillPersonBadgeFill />
 											</span>
 										</div>
 									</div>
 
-									<div class="field">
-										<label for="" class="label">
-											Pokemon trainer nickname
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Pokemon trainer nickname</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="username"
 												type="text"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<GiSteamBlast />
 											</span>
 										</div>
 									</div>
 
-									<div class="field">
-										<label for="" class="label">
-											Region / origin
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Region / origin</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="region"
 												type="text"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<BiWorld />
 											</span>
 										</div>
 									</div>
 
-									<div class="field">
-										<label for="" class="label">
-											Gender
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Gender</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="gender"
 												type="text"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<BsGenderAmbiguous />
 											</span>
 										</div>
 									</div>
 
-									<div class="field">
-										<label for="" class="label">
-											Age
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Age</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="age"
 												type="number"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<BsFillCalendarDateFill />
 											</span>
 										</div>
 									</div>
 
-									<div class="field">
-										<label for="" class="label">
-											Email
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Email</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="email"
 												type="email"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<MdEmail />
 											</span>
 										</div>
 									</div>
 
-									<div class="field">
-										<label for="" class="label">
-											Trainer class
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Trainer class</label>
+										<div className="control has-icons-left">
 											<select
 												onChange={handleInputChange}
 												name="trainerclass"
@@ -188,31 +174,29 @@ export const SingUpScreen = () => {
 												<option value="battle">Show</option>
 											</select>
 
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<BsFillBookFill />
 											</span>
 										</div>
 									</div>
 
-									<div class="field">
-										<label for="" class="label">
-											Password
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Password</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="password"
 												type="password"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<RiLockPasswordFill />
 											</span>
 										</div>
 									</div>
 
-									<button class="button is-info is-fullwidth mt-5 mb-5">
+									<button className="button is-info is-fullwidth mt-5 mb-5">
 										Sing Up
 									</button>
 

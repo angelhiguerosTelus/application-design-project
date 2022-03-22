@@ -33,19 +33,22 @@ const api = {
 	login(params) {
 		return requestAPI(`/user`, {
 			method: 'POST',
-			body: params,
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(params),
 		})
 	},
 	singUp(params) {
 		return requestAPI(`/user/add`, {
 			method: 'POST',
-			body: params,
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(params),
 		})
 	},
 	updated(params) {
 		return requestAPI(`/user`, {
 			method: 'PUT',
-			body: params,
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(params),
 		})
 	},
 
@@ -53,7 +56,8 @@ const api = {
 	addPokemon(pokemon) {
 		return requestAPI(`/pokemon`, {
 			method: 'POST',
-			body: pokemon,
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(pokemon),
 		})
 	},
 	listPokemons(_uid) {
