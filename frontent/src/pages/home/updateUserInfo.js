@@ -127,8 +127,8 @@ export const UpdateUserInfo = ({ view }) => {
 											onChange={handleInputChange}
 											className="input is-small"
 										>
-											<option value="battle">Battle</option>
-											<option value="show">Show</option>
+											<option value="Battle">Battle</option>
+											<option value="Show">Show</option>
 										</select>
 									</div>
 								</div>
