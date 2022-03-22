@@ -1,3 +1,4 @@
+
 const fs = require("fs");
 var path = require("path");
 var pathConfig = path.resolve(__dirname, "./config.json");

@@ -1,4 +1,5 @@
 const express = require("express");
+
 const bodyParser = require("body-parser");
 const {
   getUser,
@@ -8,6 +9,7 @@ const {
   addPokemon,
   getPokemon,
 } = require("./src/bd/actionJson");
+
 const app = express();
 
 // Hanlde post request
@@ -21,6 +23,7 @@ app.post("/user", (req, res) => {
   let { username, password } = req.body;
 
   let response = getUser(username, password);
+
   res.send(response);
 });
 
@@ -86,6 +89,7 @@ app.post("/pokemon", (req, res) => {
   let { _uid, pokemon, nickname } = req.body;
   let response = addPokemon(_uid, pokemon, nickname);
   res.send(response);
+
 });
 
 app.listen(PORT, () => {
