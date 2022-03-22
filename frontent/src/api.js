@@ -44,7 +44,7 @@ const api = {
 			body: JSON.stringify(params),
 		})
 	},
-	updated(params) {
+	update(params) {
 		return requestAPI(`/user`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
