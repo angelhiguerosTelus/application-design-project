@@ -17,24 +17,19 @@ export const UpdateUserInfo = ({ view }) => {
 	const handleSubmit = async e => {
 		e.preventDefault()
 
-		// let data = await api.singUp(userData)
-		let data = {
-			error: '',
-			data: 'Usuario actualizado',
-		}
+		let data = await api.update(userData)
 
 		if (data.error !== '') {
 			Swal.fire(
 				'Incorrect data',
-				'Complete all the fields and enter valid data',
+				data.error,
 				'error'
 			)
 		} else {
 			setUser(userData)
-			Swal.fire('Success', 'User was updated', 'success')
-      .then(res => {
-        window.location.href = '/'
-      })
+			Swal.fire('Success', 'User was updated', 'success').then(res => {
+				window.location.href = '/'
+			})
 		}
 	}
 
@@ -45,11 +40,11 @@ export const UpdateUserInfo = ({ view }) => {
 					<form onSubmit={handleSubmit}>
 						<div className="columns is-centered">
 							<div className="column is-5">
-								<div class="field">
-									<label class="label">Name</label>
-									<div class="control">
+								<div className="field">
+									<label className="label">Name</label>
+									<div className="control">
 										<input
-											class="input is-small"
+											className="input is-small"
 											type="text"
 											name="name"
 											value={userData.name}
@@ -58,74 +53,74 @@ export const UpdateUserInfo = ({ view }) => {
 									</div>
 								</div>
 
-								<div class="field">
-									<label class="label">Pokemon trainer nickname</label>
-									<div class="control">
+								<div className="field">
+									<label className="label">Pokemon trainer nickname</label>
+									<div className="control">
 										<input
 											value={userData.username}
 											onChange={handleInputChange}
 											name="username"
-											class="input is-small"
+											className="input is-small"
 											type="text"
 										/>
 									</div>
 								</div>
 
-								<div class="field">
-									<label class="label">Region of origin</label>
-									<div class="control">
+								<div className="field">
+									<label className="label">Region of origin</label>
+									<div className="control">
 										<input
 											value={userData.region}
 											onChange={handleInputChange}
 											name="region"
-											class="input is-small"
+											className="input is-small"
 											type="text"
 										/>
 									</div>
 								</div>
 
-								<div class="field">
-									<label class="label">Gender</label>
-									<div class="control">
+								<div className="field">
+									<label className="label">Gender</label>
+									<div className="control">
 										<input
 											name="gender"
 											value={userData.gender}
 											onChange={handleInputChange}
-											class="input is-small"
+											className="input is-small"
 											type="text"
 										/>
 									</div>
 								</div>
 
-								<div class="field">
-									<label class="label">Age</label>
-									<div class="control">
+								<div className="field">
+									<label className="label">Age</label>
+									<div className="control">
 										<input
 											name="age"
 											value={userData.age}
 											onChange={handleInputChange}
-											class="input is-small"
+											className="input is-small"
 											type="text"
 										/>
 									</div>
 								</div>
 
-								<div class="field">
-									<label class="label">Email</label>
-									<div class="control">
+								<div className="field">
+									<label className="label">Email</label>
+									<div className="control">
 										<input
 											name="email"
 											value={userData.email}
 											onChange={handleInputChange}
-											class="input is-small"
+											className="input is-small"
 											type="email"
 										/>
 									</div>
 								</div>
 
-								<div class="field">
-									<label class="label">Trainer class</label>
-									<div class="control">
+								<div className="field">
+									<label className="label">Trainer class</label>
+									<div className="control">
 										<select
 											name="class"
 											value={userData.class}
@@ -138,7 +133,7 @@ export const UpdateUserInfo = ({ view }) => {
 									</div>
 								</div>
 
-								<div class="field">
+								<div className="field">
 									<button
 										type="submit"
 										className="button is-info is-fullwidth mt-4"

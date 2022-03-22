@@ -93,7 +93,7 @@ const addUser = (
     };
   } else {
     return {
-      error: "Username had been used by another account",
+      error: "Username has been used by another account",
       data: "",
     };
   }
