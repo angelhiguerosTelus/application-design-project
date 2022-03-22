@@ -24,21 +24,7 @@ export const LoginScreen = () => {
 	const handleSubmit = async e => {
 		e.preventDefault()
 
-		// let data = await api.login(userData)
-		let data = {
-			error: '',
-			data: {
-				_uid: '1',
-				username: 'angelhigue',
-				name: 'Angel',
-				region: 'Guatemala',
-				gender: 'male',
-				age: '20',
-				email: 'angel@gmail.com',
-				class: 'Battle',
-				password: '123',
-			},
-		}
+		let data = await api.login(userData)
 
 		if (data.error !== '') {
 			Swal.fire('Incorrect username or password', '', 'error')

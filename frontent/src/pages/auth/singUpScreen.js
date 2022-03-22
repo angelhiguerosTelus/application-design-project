@@ -31,27 +31,21 @@ export const SingUpScreen = () => {
 	const handleSubmit = async e => {
 		e.preventDefault()
 
-		// let data = await api.singUp(userData)
-		let data = {
-			error: '',
-			data: {
-				_uid: '1',
-			},
-		}
+		let data = await api.singUp(userData)
 
-		if (data.error !== '') {
-			Swal.fire(
-				'Incorrect data',
-				'Complete all the fields and enter valid data',
-				'error'
-			)
-			setIsAuth(false)
-		} else {
-			Swal.fire('Success', 'User was created', 'success')
-			setIsAuth(true)
-			setUser({ ...userData, _uid: data.data._uid })
-			window.location.href = '/'
-		}
+		// if (data.error !== '') {
+		// 	Swal.fire(
+		// 		'Incorrect data',
+		// 		'Complete all the fields and enter valid data',
+		// 		'error'
+		// 	)
+		// 	setIsAuth(false)
+		// } else {
+		// 	Swal.fire('Success', 'User was created', 'success')
+		// 	setIsAuth(true)
+		// 	setUser(data.data)
+		// 	window.location.href = '/'
+		// }
 	}
 
 	return (
@@ -187,7 +181,7 @@ export const SingUpScreen = () => {
 										<div class="control has-icons-left">
 											<select
 												onChange={handleInputChange}
-												name="class"
+												name="trainerclass"
 												className="input"
 											>
 												<option value="battle">Battle</option>

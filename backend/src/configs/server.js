@@ -1,6 +1,5 @@
+const PORT = 8000;
 
-
-
-export const  server = {
-    PORT: 8000,
-}
+module.exports = {
+    PORT,
+};

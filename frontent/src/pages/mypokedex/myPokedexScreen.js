@@ -12,13 +12,18 @@ export const MyPokedexScreen = () => {
 	const [cards, setCards] = useState([])
 	const [offset, setOffset] = useState(0)
 
+	const handleOffsetNext = () => {
+		setOffset(prev => prev + 100)
+	}
+
+	const handleOffsetPrev = () => {
+		setOffset(prev => prev - 100)
+	}
+
 	useEffect(() => {
 		const fetch = async () => {
-			let data = await api.listPokemons({
-				user,
-				offset,
-			})
-			setCards(data.data)
+			let data = await api.listPokemons(user._uid)
+			setCards(data.data.slice(0, offset))
 		}
 		fetch()
 	}, [offset])
@@ -29,9 +34,9 @@ export const MyPokedexScreen = () => {
 				<Menu />
 				<UserInfo />
 				<div className="box mt-5">
-					<NavigationBar setOffset={setOffset} />
+					<NavigationBar setOffset={handleOffsetNext} />
 					<PokedexList cards={cards} />
-					<NavigationBar setOffset={setOffset} />
+					<NavigationBar setOffset={handleOffsetPrev} />
 				</div>
 			</div>
 		</>
