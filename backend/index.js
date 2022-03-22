@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 
 const bodyParser = require("body-parser");
 const {
@@ -17,6 +18,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const { PORT } = require("./src/configs/server");
+
+// Application
+app.use('/', express.static(path.join(__dirname, 'build')))
+
+
 
 // Users
 app.post("/user", (req, res) => {
