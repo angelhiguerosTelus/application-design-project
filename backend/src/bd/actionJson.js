@@ -203,7 +203,7 @@ const getPokemon = (_uid, pokemonId) => {
   readFiles();
 
   let res = pokedex.filter(
-    (pokemon) => parseInt(_uid) === parseInt(pokemon._uid) && pokemonId === pokemon.pokemon
+    (pokemon) => parseInt(_uid) === parseInt(pokemon._uid) && parseInt(pokemonId) === parseInt(pokemon.pokemon)
   );
 
   return {
