@@ -81,6 +81,8 @@ app.get("/pokemon/:_uid", (req, res) => {
 app.get("/pokemon/:_uid/:pokemon", (req, res) => {
   let { _uid, pokemon } = req.params;
   let response = getPokemon(_uid, pokemon);
+  console.log(response)
+
   res.send(response);
 });
 
