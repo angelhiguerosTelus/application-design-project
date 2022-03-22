@@ -20,9 +20,13 @@ export const PokedexCard = ({ url }) => {
 			)
 
 			let alreadyOwned = await api.getPokemon(user._uid, data.id)
+			console.log(alreadyOwned.data.length)
 
-
-			setPokemonData(prev => ({ ...prev, gender: genderData.name, pokedex: alreadyOwned > 0 ? true : false }))
+			setPokemonData(prev => ({
+				...prev,
+				gender: genderData.name,
+				pokedex: alreadyOwned.data.length === 0 ? false : true,
+			}))
 		}
 
 		fetch()
@@ -43,12 +47,11 @@ export const PokedexCard = ({ url }) => {
 		})
 
 		if (nickname) {
-			// let data = await api.addPokemon(pokemon)
-
-			let data = {
-				error: '',
-				data: 'pokemon added to pokedex',
-			}
+			let data = await api.addPokemon({
+				_uid: user._uid,
+				pokemon: pokemon.id,
+				nickname,
+			})
 
 			if (data.error !== '') {
 				Swal.fire(`Pokemon wasn't added to pokedex`, '', 'error')
@@ -88,13 +91,16 @@ export const PokedexCard = ({ url }) => {
 								</li>
 							</ul>
 
-							{!pokemonData ? <button
-								onClick={() => handleAddPokemon(pokemonData)}
-								className="button is-success is-fullwidth"
-							>
-								Add to pokedex
-							</button>: <span>This pokemon is in your pokedex</span>}
-							
+							{pokemonData ? (
+								<button
+									onClick={() => handleAddPokemon(pokemonData)}
+									className="button is-success is-fullwidth"
+								>
+									Add to pokedex
+								</button>
+							) : (
+								<span>This pokemon is in your pokedex</span>
+							)}
 						</div>
 					</div>
 				</div>

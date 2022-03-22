@@ -1,5 +1,5 @@
 const requestPokemonAPI = async (endpoint, options) => {
-	const res = await fetch(`https://pokeapi.co/api/v2${endpoint}`, options)
+	const res = await fetch(`https://pokeapi.co/api/v2/${endpoint}`, options)
 	const data = await res.json()
 	return data
 }
@@ -61,10 +61,10 @@ const api = {
 		})
 	},
 	listPokemons(_uid) {
-		return requestAPI(`/pokemon/list/${_uid}`)
+		return requestAPI(`/pokemon/${_uid}`)
 	},
 	getPokemon(_uid, pokemon) {
-		return requestAPI(`/pokemon/list/${_uid}/${pokemon}`)
+		return requestAPI(`/pokemon/${_uid}/${pokemon}`)
 	},
 }
 
