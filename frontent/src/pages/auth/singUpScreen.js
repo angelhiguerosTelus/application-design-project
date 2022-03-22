@@ -19,7 +19,9 @@ import api from '../../api'
 export const SingUpScreen = () => {
 	const [userData, setUserData] = useState({})
 	const [, setIsAuth] = useSessionStorage('isAuth', false)
-	const [, setUser] = useSessionStorage('user', {})
+	const [, setUser] = useSessionStorage('user', {
+		trainerclass: 'Battle',
+	})
 
 	const handleInputChange = e => {
 		setUserData(prev => ({
@@ -170,8 +172,8 @@ export const SingUpScreen = () => {
 												name="trainerclass"
 												className="input"
 											>
-												<option value="battle">Battle</option>
-												<option value="battle">Show</option>
+												<option value="Battle">Battle</option>
+												<option value="Show">Show</option>
 											</select>
 
 											<span className="icon is-small is-left">
