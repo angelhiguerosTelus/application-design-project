@@ -3,20 +3,19 @@ import api from '../../api'
 import { Modal } from '../ui/modal'
 import { PokemonModal } from './pokemonModal'
 
-export const PokedexCard = ({ url }) => {
+export const PokedexCard = ({ nickname, pokemon }) => {
 	const [pokemonData, setPokemonData] = useState({})
 
 	useEffect(() => {
 		const fetch = async () => {
-			let data = await api.getInfo(url)
+			let data = await api.getInfo(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
 			setPokemonData(data)
 
 			let genderData = await api.getInfo(`https://pokeapi.co/api/v2/gender/${data.id}`)
-			console.log(genderData)
 			setPokemonData(prev => ({...prev, gender: genderData.name}))
 		}
 		fetch()
-	}, [url])
+	}, [pokemon])
 
 	const [modal, setModal] = useState(false)
 	const handleModal = e => {
@@ -37,7 +36,7 @@ export const PokedexCard = ({ url }) => {
 						<div className="media">
 							<div className="media-content">
 								<p className="title is-4">{pokemonData.name}</p>
-								<p className="subtitle is-5">Nickname</p>
+								<p className="subtitle is-5">{nickname}</p>
 								<p className="subtitle is-6">{pokemonData.gender || "genderless"}</p>
 							</div>
 						</div>

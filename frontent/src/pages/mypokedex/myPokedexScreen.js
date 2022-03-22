@@ -10,7 +10,7 @@ export const MyPokedexScreen = () => {
 	const [user] = useSessionStorage('user', {})
 
 	const [cards, setCards] = useState([])
-	const [offset, setOffset] = useState(0)
+	const [offset, setOffset] = useState(100)
 
 	const handleOffsetNext = () => {
 		setOffset(prev => prev + 100)

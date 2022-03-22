@@ -20,7 +20,6 @@ export const PokedexCard = ({ url }) => {
 			)
 
 			let alreadyOwned = await api.getPokemon(user._uid, data.id)
-			console.log(alreadyOwned.data.length)
 
 			setPokemonData(prev => ({
 				...prev,
@@ -57,7 +56,7 @@ export const PokedexCard = ({ url }) => {
 				Swal.fire(`Pokemon wasn't added to pokedex`, '', 'error')
 			} else {
 				Swal.fire('Pokemon was added to pokedex', '', 'success').then(res => {
-					window.location.href = '/mypokedex'
+					// window.location.href = '/mypokedex'
 				})
 			}
 		}
