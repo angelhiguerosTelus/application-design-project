@@ -39,57 +39,53 @@ export const LoginScreen = () => {
 	return (
 		<>
 			<section
-				class="hero is-fullheight"
+				className="hero is-fullheight"
 				style={{
 					backgroundImage: `url(${wallpaper})`,
 					backgroundSize: 'cover',
 				}}
 			>
-				<div class="hero-body">
-					<div class="container">
-						<div class="columns is-centered">
-							<div class="column is-5-tablet is-4-desktop is-3-widescreen">
-								<form class="box" onSubmit={handleSubmit}>
+				<div className="hero-body">
+					<div className="container">
+						<div className="columns is-centered">
+							<div className="column is-5-tablet is-4-desktop is-3-widescreen">
+								<form className="box" onSubmit={handleSubmit}>
 									<span className="subtitle is-4 has-text-centered">
 										Pokedex
 									</span>
-									<div class="field">
-										<label for="" class="label">
-											Pokemon trainer nickname
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Pokemon trainer nickname</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="username"
 												type="text"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<GiSteamBlast />
 											</span>
 										</div>
 									</div>
 
-									<div class="field">
-										<label for="" class="label">
-											Password
-										</label>
-										<div class="control has-icons-left">
+									<div className="field">
+										<label className="label">Password</label>
+										<div className="control has-icons-left">
 											<input
 												onChange={handleInputChange}
 												name="password"
 												type="password"
-												class="input"
+												className="input"
 												required
 											/>
-											<span class="icon is-small is-left">
+											<span className="icon is-small is-left">
 												<RiLockPasswordFill />
 											</span>
 										</div>
 									</div>
 
-									<button class="button is-info is-fullwidth mt-5 mb-5">
+									<button className="button is-info is-fullwidth mt-5 mb-5">
 										Login
 									</button>
 

@@ -30,7 +30,6 @@ app.post("/user", (req, res) => {
 app.post("/user/add", (req, res) => {
   let { name, username, password, region, gender, age, email, trainerclass } =
     req.body;
-  console.log(req.body)
 
   let response = addUser(
     name,
@@ -89,7 +88,6 @@ app.post("/pokemon", (req, res) => {
   let { _uid, pokemon, nickname } = req.body;
   let response = addPokemon(_uid, pokemon, nickname);
   res.send(response);
-
 });
 
 app.listen(PORT, () => {
