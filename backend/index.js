@@ -1,101 +1,27 @@
 const express = require("express");
-const path = require('path');
-
+const path = require("path");
+const cors = require("cors");
 const bodyParser = require("body-parser");
-const {
-  getUser,
-  addUser,
-  updateUser,
-  listPokemon,
-  addPokemon,
-  getPokemon,
-} = require("./src/bd/actionJson");
-
 const app = express();
 
-// Hanlde post request
+const router = require("./src/components/routes");
+const { PORT } = require("./src/configs/server");
+
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const { PORT } = require("./src/configs/server");
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost");
+//   next();
+// });
+
+router(app);
 
 // Application
-app.use('/', express.static(path.join(__dirname, 'build')))
-
-
-
-// Users
-app.post("/user", (req, res) => {
-  let { username, password } = req.body;
-
-  let response = getUser(username, password);
-
-  res.send(response);
-});
-
-app.post("/user/add", (req, res) => {
-  let { name, username, password, region, gender, age, email, trainerclass } =
-    req.body;
-
-  let response = addUser(
-    name,
-    username,
-    password,
-    region,
-    gender,
-    age,
-    email,
-    trainerclass
-  );
-
-  res.send(response);
-});
-
-app.put("/user", (req, res) => {
-  let {
-    _uid,
-    name,
-    username,
-    password,
-    region,
-    gender,
-    age,
-    email,
-    trainerclass,
-  } = req.body;
-  let response = updateUser(
-    _uid,
-    name,
-    username,
-    password,
-    region,
-    gender,
-    age,
-    email,
-    trainerclass
-  );
-  res.send(response);
-});
-
-// Pokedex
-app.get("/pokemon/:_uid", (req, res) => {
-  let { _uid } = req.params;
-  let response = listPokemon(_uid);
-  res.send(response);
-});
-
-app.get("/pokemon/:_uid/:pokemon", (req, res) => {
-  let { _uid, pokemon } = req.params;
-  let response = getPokemon(_uid, pokemon);
-  console.log(response)
-
-  res.send(response);
-});
-
-app.post("/pokemon", (req, res) => {
-  let { _uid, pokemon, nickname } = req.body;
-  let response = addPokemon(_uid, pokemon, nickname);
-  res.send(response);
+app.use(express.static(path.join(__dirname, "build")));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT, () => {

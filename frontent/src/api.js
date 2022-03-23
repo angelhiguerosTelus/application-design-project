@@ -5,7 +5,7 @@ const requestPokemonAPI = async (endpoint, options) => {
 }
 
 const requestAPI = async (endpoint, options) => {
-	const res = await fetch(`${endpoint}`, options)
+	const res = await fetch(`http://localhost:8000/api${endpoint}`, options)
 	const data = await res.json()
 	return data
 }
